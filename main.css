@@ -1,0 +1,13 @@
+/*svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}*/
+.curve, .line {
+  fill: none;
+  stroke-width: 1px;
+}
+.curve {
+  stroke: red;
+  stroke-width: 3px;
+}
