@@ -1,13 +1,18 @@
-/*svg {
+svg {
   position: absolute;
   top: 0;
   left: 0;
-}*/
+}
 .curve, .line {
   fill: none;
   stroke-width: 1px;
 }
 .curve {
   stroke: red;
-  stroke-width: 3px;
+  stroke-width: 2px;
+}
+
+
+body {
+    background-image: url("img/gk_logo.png")
 }

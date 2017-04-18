@@ -1,15 +1,23 @@
-var w = 400,
-    h = 400,
-    t = 0.1,
+var w = 1100,
+    h = 900,
+    t = 1.0,
     delta = 0.01,
     padding = 10,
     controlPoints = [
-    [{x: 0, y: 150}, {x: 20, y: 0}, {x: 100, y: 0}, {x: 200, y: 150}],
-    [{x: 30, y: 150}, {x: 30, y: 0}, {x: 150, y: 0}, {x: 200, y: 150}],
-    // Straight Line "Curve"
-    [{x: 0, y: 0}, {x: 0, y: 250}],
-    // Quadratic Bezier Curve
-    [{x: 10, y: 250}, {x: 0, y: 0}, {x: 200, y: 250}]
+    // Sample data
+    // [{x: 0, y: 150}, {x: 20, y: 0}, {x: 100, y: 0}, {x: 200, y: 150}],
+    // [{x: 30, y: 150}, {x: 30, y: 0}, {x: 150, y: 0}, {x: 200, y: 150}],
+    // // Straight Line "Curve"
+    // [{x: 0, y: 0}, {x: 0, y: 250}],
+    // // Quadratic Bezier Curve
+    // [{x: 10, y: 250}, {x: 0, y: 0}, {x: 200, y: 250}]
+
+    [{x: 661, y: 675}, {x: 661, y: 892}],
+
+    // Outside Outer-left tenticale 
+    [{x: 661, y: 892}, {x: 380, y: 888}, {x: 163, y: 578}, {x: 279, y: 303}]
+
+
     ],
     bezierCurves = [],
     line = d3.svg.line().x(x).y(y),
@@ -33,20 +41,20 @@ var canvas = d3.select("body").selectAll("svg")
 
 update();
 
-var last = 0;
-d3.timer(function(elapsed) {
-  if (t>1) flag = 1;
-  if (t<0) flag = 0;
-  if (flag === 0){
-    t = (t + (elapsed - last) / 10000);
-    last = elapsed;
-  }
-  if (flag === 1){
-    t = (t - (elapsed - last) / 10000);
-    last = elapsed;
-  }
-  update();
-});
+// var last = 0;
+// d3.timer(function(elapsed) {
+//   if (t>1) flag = 1;
+//   if (t<0) flag = 0;
+//   if (flag === 0){
+//     t = (t + (elapsed - last) / 10000);
+//     last = elapsed;
+//   }
+//   if (flag === 1){
+//     t = (t - (elapsed - last) / 10000);
+//     last = elapsed;
+//   }
+//   update();
+// });
 
 function update() {
   var interpolation = canvas.selectAll("g")
@@ -60,6 +68,7 @@ function update() {
   circle.enter().append("circle")
       .attr("r", 4)
   circle
+      .attr("class", "circle")
       .attr("cx", x)
       .attr("cy", y);
 
