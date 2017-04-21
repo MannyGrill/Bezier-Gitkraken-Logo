@@ -1,7 +1,7 @@
 var w = 1100,
     h = 900,
     t = 1.0,
-    delta = 0.01,
+    delta = 0.001,
     padding = 10,
     controlPoints = [
     // Sample data
@@ -14,8 +14,16 @@ var w = 1100,
 
     [{x: 661, y: 675}, {x: 661, y: 892}],
 
-    // Outside Outer-left tenticale 
-    [{x: 661, y: 892}, {x: 380, y: 888}, {x: 163, y: 578}, {x: 279, y: 303}]
+    // Outside Outer-left tenticale
+    [{x: 661, y: 892}, {x: 380, y: 888}, {x: 163, y: 578}, {x: 279, y: 303}],
+
+    [{x: 279, y: 303}, {x: 305, y: 288}, {x: 310, y: 315}],
+
+    [{x: 310, y: 315}, {x: 205, y: 578}, {x: 418, y: 844}, {x: 628, y: 851}],
+
+    [{x: 628, y: 851}, {x: 628, y: 670}],
+
+    [{x: 628, y: 670}, {x: 605, y: 667}, {x: 593, y: 662}]
 
 
     ],
@@ -66,7 +74,7 @@ function update() {
   var circle = interpolation.selectAll("circle")
       .data(Object);
   circle.enter().append("circle")
-      .attr("r", 4)
+      .attr("r", 3)
   circle
       .attr("class", "circle")
       .attr("cx", x)
