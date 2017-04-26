@@ -12,19 +12,29 @@ var w = 1100,
     // // Quadratic Bezier Curve
     // [{x: 10, y: 250}, {x: 0, y: 0}, {x: 200, y: 250}]
 
+    // Outside Outer-left tentacle
     [{x: 661, y: 675}, {x: 661, y: 892}],
-
-    // Outside Outer-left tenticale
     [{x: 661, y: 892}, {x: 380, y: 888}, {x: 163, y: 578}, {x: 279, y: 303}],
 
+    // Point Outer-left tentacle
     [{x: 279, y: 303}, {x: 305, y: 288}, {x: 310, y: 315}],
 
+    // Inside Outer-left tentacle
     [{x: 310, y: 315}, {x: 205, y: 578}, {x: 418, y: 844}, {x: 628, y: 851}],
-
     [{x: 628, y: 851}, {x: 628, y: 670}],
 
-    [{x: 628, y: 670}, {x: 605, y: 667}, {x: 593, y: 662}]
+    [{x: 628, y: 670}, {x: 605, y: 667}, {x: 593, y: 662}],
 
+    // Outside Inner-left tentacle
+    [{x: 593, y: 662}, {x: 593, y: 815}],
+    [{x: 593, y: 815}, {x: 314, y: 766}, {x: 180, y: 330}, {x: 506, y: 140}],
+
+    // Point Inner-left tentacle
+    [{x: 506, y: 140}, {x: 535, y: 142}, {x: 525, y: 171}],
+
+    // Inside Inner-left tentacle
+    [{x: 525, y: 171}, {x: 228, y: 341}, {x: 356, y: 707}, {x: 558, y: 767}],
+    [{x: 558, y: 767}, {x: 558, y: 633}]
 
     ],
     bezierCurves = [],
