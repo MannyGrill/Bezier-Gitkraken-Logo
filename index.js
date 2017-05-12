@@ -3,7 +3,8 @@ var w = 1100,
     t = 1.0,
     delta = 0.001,
     padding = 10,
-    controlPoints = [
+    reflectLineX = 678,
+    inputPoints = [
     // Sample data
     // [{x: 0, y: 150}, {x: 20, y: 0}, {x: 100, y: 0}, {x: 200, y: 150}],
     // [{x: 30, y: 150}, {x: 30, y: 0}, {x: 150, y: 0}, {x: 200, y: 150}],
@@ -34,8 +35,25 @@ var w = 1100,
 
     // Inside Inner-left tentacle
     [{x: 525, y: 171}, {x: 228, y: 341}, {x: 356, y: 707}, {x: 558, y: 767}],
-    [{x: 558, y: 767}, {x: 558, y: 633}]
+    [{x: 558, y: 767}, {x: 558, y: 633}],
 
+    // Head left
+    [{x: 558, y: 633}, {x: 510, y: 620}, {x: 510, y: 547}, {x: 547, y: 535}],
+
+    [{x: 547, y: 535}, {x: 545, y: 490}, {x: 538, y: 445}, {x: 475, y: 430}, {x: 481, y: 420}],
+    [{x: 481, y: 420}, {x: 481, y: 385}],
+    [{x: 481, y: 385}],
+
+    [{x: 678, y: 675}],
+
+    // Test ~to be deleted~
+    [{x: (reflectLineX+(reflectLineX - 661)), y: 675}, {x: (reflectLineX+(reflectLineX - 661)), y: 892}],
+
+    ],
+    controlPoints = [
+      [{x: inputPoints[0][0].x, y: inputPoints[0][0].y}, {x: inputPoints[0][1].x, y: inputPoints[0][1].y}],
+      [{x: (reflectLineX+(reflectLineX-inputPoints[0][0].x)), y: inputPoints[0][0].y},
+       {x: (reflectLineX+(reflectLineX-inputPoints[0][1].x)), y: inputPoints[0][1].y}]
     ],
     bezierCurves = [],
     line = d3.svg.line().x(x).y(y),
@@ -43,7 +61,7 @@ var w = 1100,
     stroke = d3.scale.category20b(),
     // Tell range how many curves to expect
     numberOfCurves = d3.range(0, controlPoints.length);
-
+    //console.log(controlPoints);
     // Intialize Bezier curve array with empty objects
     for (var j=0; j< controlPoints.length; j++){
       bezierCurves.push({});
@@ -59,20 +77,20 @@ var canvas = d3.select("body").selectAll("svg")
 
 update();
 
-// var last = 0;
-// d3.timer(function(elapsed) {
-//   if (t>1) flag = 1;
-//   if (t<0) flag = 0;
-//   if (flag === 0){
-//     t = (t + (elapsed - last) / 10000);
-//     last = elapsed;
-//   }
-//   if (flag === 1){
-//     t = (t - (elapsed - last) / 10000);
-//     last = elapsed;
-//   }
-//   update();
-// });
+var last = 0;
+d3.timer(function(elapsed) {
+  if (t>1) flag = 1;
+  if (t<0) flag = 0;
+  if (flag === 0){
+    t = (t + (elapsed - last) / 10000);
+    last = elapsed;
+  }
+  if (flag === 1){
+    t = (t - (elapsed - last) / 10000);
+    last = elapsed;
+  }
+  update();
+});
 
 function update() {
   var interpolation = canvas.selectAll("g")
