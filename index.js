@@ -1,9 +1,9 @@
 var w = 1200,
     h = 900,
-    t = 1.0,
-    delta = 0.001,
-    padding = 10,
-    reflectLineX = 678,
+    t = 0.0,
+    delta = 0.005,
+    padding = 0,
+    reflectLineX = 679,
     controlPoints = [
 
     // Outside Outer-left tentacle
@@ -35,10 +35,14 @@ var w = 1200,
 
     [{x: 547, y: 535}, {x: 545, y: 490}, {x: 538, y: 445}, {x: 475, y: 430}, {x: 481, y: 420}],
     [{x: 481, y: 420}, {x: 481, y: 385}],
-    [{x: 481, y: 385}],
+    [{x: 481, y: 385}, {x: 501, y: 290}, {x: 609, y: 152}, {x: 679, y: 140}],
 
-    //[{x: 678, y: 675}],
-
+    // Eye left
+    [{x: 576, y: 617}, {x: 594, y: 617}, {x: 611, y: 600}, {x: 611, y: 582}],
+    [{x: 611, y: 582}, {x: 611, y: 564}, {x: 594, y: 547}, {x: 576, y: 547}],
+    [{x: 576, y: 547}, {x: 558, y: 547}, {x: 541, y: 564}, {x: 541, y: 582}],
+    [{x: 541, y: 582}, {x: 541, y: 600}, {x: 558, y: 617}, {x: 576, y: 617}],
+    //[{x: 562, y: 603}, {x: 580, y: 603}, {x: 597, y: 586}, {x: 597, y: 568}],
     // Test ~to be deleted~
     //[{x: (reflectLineX+(reflectLineX - 661)), y: 675}, {x: (reflectLineX+(reflectLineX - 661)), y: 892}],
 
@@ -71,7 +75,13 @@ var w = 1200,
 
     [{x: 547, y: 535}, {x: 545, y: 490}, {x: 538, y: 445}, {x: 475, y: 430}, {x: 481, y: 420}],
     [{x: 481, y: 420}, {x: 481, y: 385}],
-    [{x: 481, y: 385}]
+    [{x: 481, y: 385}, {x: 501, y: 290}, {x: 609, y: 152}, {x: 679, y: 140}],
+
+    // Eye left
+    [{x: 576, y: 617}, {x: 594, y: 617}, {x: 611, y: 600}, {x: 611, y: 582}],
+    [{x: 611, y: 582}, {x: 611, y: 564}, {x: 594, y: 547}, {x: 576, y: 547}],
+    [{x: 576, y: 547}, {x: 558, y: 547}, {x: 541, y: 564}, {x: 541, y: 582}],
+    [{x: 541, y: 582}, {x: 541, y: 600}, {x: 558, y: 617}, {x: 576, y: 617}]
 
     ],
     // controlPoints = [
@@ -93,7 +103,7 @@ for (var j=0; j<controlPoints.length; j++){
   bezierCurves.push({});
 }
 
-// Reflect half the points
+//Reflect half the points
 for (var i=0; i<controlPoints.length/2; i++){
   for (var j=0; j<controlPoints[i].length; j++){
     controlPoints[i][j].x = (reflectLineX+(reflectLineX-controlPoints[i][j].x));
@@ -103,6 +113,8 @@ for (var i=0; i<controlPoints.length/2; i++){
 var canvas = d3.select("body").selectAll("svg")
     .data(numberOfCurves)
   .enter().append("svg")
+    // .attr("preserveAspectRatio", "xMinYMin meet")
+    // .attr("viewBox", "0 0 1210 910")
     .attr("width", w + 2 * padding)
     .attr("height", h + 2 * padding)
   .append("g")
@@ -110,20 +122,21 @@ var canvas = d3.select("body").selectAll("svg")
 
 update();
 
-// var last = 0;
-// d3.timer(function(elapsed) {
-//   if (t>1) flag = 1;
-//   if (t<0) flag = 0;
-//   if (flag === 0){
-//     t = (t + (elapsed - last) / 20000);
-//     last = elapsed;
-//   }
-//   if (flag === 1){
-//     t = (t - (elapsed - last) / 20000);
-//     last = elapsed;
-//   }
-//   update();
-// });
+var last = 0;
+d3.timer(function(elapsed) {
+  if (t>1) flag = 1;
+  if (t<0) flag = 0;
+  if (flag === 0){
+    t = (t + (elapsed - last) / 20000);
+    last = elapsed;
+  }
+  if (flag === 1){
+    // t = (t - (elapsed - last) / 20000);
+    // last = elapsed;
+    t = 1.0;
+  }
+  update();
+});
 
 function update() {
   var interpolation = canvas.selectAll("g")
@@ -135,7 +148,7 @@ function update() {
   var circle = interpolation.selectAll("circle")
       .data(Object);
   circle.enter().append("circle")
-      .attr("r", 3)
+      .attr("r", 2)
   circle
       .attr("class", "circle")
       .attr("cx", x)
