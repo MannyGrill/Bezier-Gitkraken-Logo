@@ -3,100 +3,96 @@ var w = 1200,
     t = 0.0,
     delta = 0.005,
     padding = 0,
-    reflectLineX = 679,
+    xOffset = 150,
+    yOffset = 10,
+    reflectLineX = 679-xOffset,
     controlPoints = [
 
     // Outside Outer-left tentacle
-    [{x: 661, y: 675}, {x: 661, y: 892}],
-    [{x: 661, y: 892}, {x: 380, y: 888}, {x: 163, y: 578}, {x: 279, y: 303}],
+    [{x: 661-xOffset, y: 675-yOffset}, {x: 661-xOffset, y: 892-yOffset}],
+    [{x: 661-xOffset, y: 892-yOffset}, {x: 380-xOffset, y: 888-yOffset}, {x: 163-xOffset, y: 578-yOffset}, {x: 279-xOffset, y: 303-yOffset}],
 
     // Point Outer-left tentacle
-    [{x: 279, y: 303}, {x: 305, y: 288}, {x: 310, y: 315}],
+    [{x: 279-xOffset, y: 303-yOffset}, {x: 305-xOffset, y: 288-yOffset}, {x: 310-xOffset, y: 315-yOffset}],
 
     // Inside Outer-left tentacle
-    [{x: 310, y: 315}, {x: 205, y: 578}, {x: 418, y: 844}, {x: 628, y: 851}],
-    [{x: 628, y: 851}, {x: 628, y: 670}],
+    [{x: 310-xOffset, y: 315-yOffset}, {x: 205-xOffset, y: 578-yOffset}, {x: 418-xOffset, y: 844-yOffset}, {x: 628-xOffset, y: 851-yOffset}],
+    [{x: 628-xOffset, y: 851-yOffset}, {x: 628-xOffset, y: 670-yOffset}],
 
-    [{x: 628, y: 670}, {x: 605, y: 667}, {x: 593, y: 662}],
+    [{x: 628-xOffset, y: 670-yOffset}, {x: 605-xOffset, y: 667-yOffset}, {x: 593-xOffset, y: 662-yOffset}],
 
     // Outside Inner-left tentacle
-    [{x: 593, y: 662}, {x: 593, y: 815}],
-    [{x: 593, y: 815}, {x: 314, y: 766}, {x: 180, y: 330}, {x: 506, y: 140}],
+    [{x: 593-xOffset, y: 662-yOffset}, {x: 593-xOffset, y: 815-yOffset}],
+    [{x: 593-xOffset, y: 815-yOffset}, {x: 314-xOffset, y: 766-yOffset}, {x: 180-xOffset, y: 330-yOffset}, {x: 506-xOffset, y: 140-yOffset}],
 
     // Point Inner-left tentacle
-    [{x: 506, y: 140}, {x: 535, y: 142}, {x: 525, y: 171}],
+    [{x: 506-xOffset, y: 140-yOffset}, {x: 535-xOffset, y: 142-yOffset}, {x: 525-xOffset, y: 171-yOffset}],
 
     // Inside Inner-left tentacle
-    [{x: 525, y: 171}, {x: 228, y: 341}, {x: 356, y: 707}, {x: 558, y: 767}],
-    [{x: 558, y: 767}, {x: 558, y: 633}],
+    [{x: 525-xOffset, y: 171-yOffset}, {x: 228-xOffset, y: 341-yOffset}, {x: 356-xOffset, y: 707-yOffset}, {x: 558-xOffset, y: 767-yOffset}],
+    [{x: 558-xOffset, y: 767-yOffset}, {x: 558-xOffset, y: 633-yOffset}],
 
     // Head left
-    [{x: 558, y: 633}, {x: 510, y: 620}, {x: 510, y: 547}, {x: 547, y: 535}],
+    [{x: 558-xOffset, y: 633-yOffset}, {x: 510-xOffset, y: 620-yOffset}, {x: 510-xOffset, y: 547-yOffset}, {x: 547-xOffset, y: 535-yOffset}],
 
-    [{x: 547, y: 535}, {x: 545, y: 490}, {x: 538, y: 445}, {x: 475, y: 430}, {x: 481, y: 420}],
-    [{x: 481, y: 420}, {x: 481, y: 385}],
-    [{x: 481, y: 385}, {x: 501, y: 290}, {x: 609, y: 152}, {x: 679, y: 140}],
+    [{x: 547-xOffset, y: 535-yOffset}, {x: 545-xOffset, y: 490-yOffset}, {x: 538-xOffset, y: 445-yOffset}, {x: 475-xOffset, y: 430-yOffset}, {x: 481-xOffset, y: 420-yOffset}],
+    [{x: 481-xOffset, y: 420-yOffset}, {x: 481-xOffset, y: 385-yOffset}],
+    [{x: 481-xOffset, y: 385-yOffset}, {x: 501-xOffset, y: 290-yOffset}, {x: 609-xOffset, y: 152-yOffset}, {x: 679-xOffset, y: 140-yOffset}],
 
     // Eye left
-    [{x: 576, y: 617}, {x: 594, y: 617}, {x: 611, y: 600}, {x: 611, y: 582}],
-    [{x: 611, y: 582}, {x: 611, y: 564}, {x: 594, y: 547}, {x: 576, y: 547}],
-    [{x: 576, y: 547}, {x: 558, y: 547}, {x: 541, y: 564}, {x: 541, y: 582}],
-    [{x: 541, y: 582}, {x: 541, y: 600}, {x: 558, y: 617}, {x: 576, y: 617}],
-    //[{x: 562, y: 603}, {x: 580, y: 603}, {x: 597, y: 586}, {x: 597, y: 568}],
-    // Test ~to be deleted~
-    //[{x: (reflectLineX+(reflectLineX - 661)), y: 675}, {x: (reflectLineX+(reflectLineX - 661)), y: 892}],
+    [{x: 576-xOffset, y: 617-yOffset}, {x: 594-xOffset, y: 617-yOffset}, {x: 611-xOffset, y: 600-yOffset}, {x: 611-xOffset, y: 582-yOffset}],
+    [{x: 611-xOffset, y: 582-yOffset}, {x: 611-xOffset, y: 564-yOffset}, {x: 594-xOffset, y: 547-yOffset}, {x: 576-xOffset, y: 547-yOffset}],
+    [{x: 576-xOffset, y: 547-yOffset}, {x: 558-xOffset, y: 547-yOffset}, {x: 541-xOffset, y: 564-yOffset}, {x: 541-xOffset, y: 582-yOffset}],
+    [{x: 541-xOffset, y: 582-yOffset}, {x: 541-xOffset, y: 600-yOffset}, {x: 558-xOffset, y: 617-yOffset}, {x: 576-xOffset, y: 617-yOffset}],
+
+
+    // -----Points to be reflected-----
+
 
     // Outside Outer-left tentacle
-    [{x: 661, y: 675}, {x: 661, y: 892}],
-    [{x: 661, y: 892}, {x: 380, y: 888}, {x: 163, y: 578}, {x: 279, y: 303}],
+    [{x: 661-xOffset, y: 675-yOffset}, {x: 661-xOffset, y: 892-yOffset}],
+    [{x: 661-xOffset, y: 892-yOffset}, {x: 380-xOffset, y: 888-yOffset}, {x: 163-xOffset, y: 578-yOffset}, {x: 279-xOffset, y: 303-yOffset}],
 
     // Point Outer-left tentacle
-    [{x: 279, y: 303}, {x: 305, y: 288}, {x: 310, y: 315}],
+    [{x: 279-xOffset, y: 303-yOffset}, {x: 305-xOffset, y: 288-yOffset}, {x: 310-xOffset, y: 315-yOffset}],
 
     // Inside Outer-left tentacle
-    [{x: 310, y: 315}, {x: 205, y: 578}, {x: 418, y: 844}, {x: 628, y: 851}],
-    [{x: 628, y: 851}, {x: 628, y: 670}],
+    [{x: 310-xOffset, y: 315-yOffset}, {x: 205-xOffset, y: 578-yOffset}, {x: 418-xOffset, y: 844-yOffset}, {x: 628-xOffset, y: 851-yOffset}],
+    [{x: 628-xOffset, y: 851-yOffset}, {x: 628-xOffset, y: 670-yOffset}],
 
-    [{x: 628, y: 670}, {x: 605, y: 667}, {x: 593, y: 662}],
+    [{x: 628-xOffset, y: 670-yOffset}, {x: 605-xOffset, y: 667-yOffset}, {x: 593-xOffset, y: 662-yOffset}],
 
     // Outside Inner-left tentacle
-    [{x: 593, y: 662}, {x: 593, y: 815}],
-    [{x: 593, y: 815}, {x: 314, y: 766}, {x: 180, y: 330}, {x: 506, y: 140}],
+    [{x: 593-xOffset, y: 662-yOffset}, {x: 593-xOffset, y: 815-yOffset}],
+    [{x: 593-xOffset, y: 815-yOffset}, {x: 314-xOffset, y: 766-yOffset}, {x: 180-xOffset, y: 330-yOffset}, {x: 506-xOffset, y: 140-yOffset}],
 
     // Point Inner-left tentacle
-    [{x: 506, y: 140}, {x: 535, y: 142}, {x: 525, y: 171}],
+    [{x: 506-xOffset, y: 140-yOffset}, {x: 535-xOffset, y: 142-yOffset}, {x: 525-xOffset, y: 171-yOffset}],
 
     // Inside Inner-left tentacle
-    [{x: 525, y: 171}, {x: 228, y: 341}, {x: 356, y: 707}, {x: 558, y: 767}],
-    [{x: 558, y: 767}, {x: 558, y: 633}],
+    [{x: 525-xOffset, y: 171-yOffset}, {x: 228-xOffset, y: 341-yOffset}, {x: 356-xOffset, y: 707-yOffset}, {x: 558-xOffset, y: 767-yOffset}],
+    [{x: 558-xOffset, y: 767-yOffset}, {x: 558-xOffset, y: 633-yOffset}],
 
     // Head left
-    [{x: 558, y: 633}, {x: 510, y: 620}, {x: 510, y: 547}, {x: 547, y: 535}],
+    [{x: 558-xOffset, y: 633-yOffset}, {x: 510-xOffset, y: 620-yOffset}, {x: 510-xOffset, y: 547-yOffset}, {x: 547-xOffset, y: 535-yOffset}],
 
-    [{x: 547, y: 535}, {x: 545, y: 490}, {x: 538, y: 445}, {x: 475, y: 430}, {x: 481, y: 420}],
-    [{x: 481, y: 420}, {x: 481, y: 385}],
-    [{x: 481, y: 385}, {x: 501, y: 290}, {x: 609, y: 152}, {x: 679, y: 140}],
+    [{x: 547-xOffset, y: 535-yOffset}, {x: 545-xOffset, y: 490-yOffset}, {x: 538-xOffset, y: 445-yOffset}, {x: 475-xOffset, y: 430-yOffset}, {x: 481-xOffset, y: 420-yOffset}],
+    [{x: 481-xOffset, y: 420-yOffset}, {x: 481-xOffset, y: 385-yOffset}],
+    [{x: 481-xOffset, y: 385-yOffset}, {x: 501-xOffset, y: 290-yOffset}, {x: 609-xOffset, y: 152-yOffset}, {x: 679-xOffset, y: 140-yOffset}],
 
     // Eye left
-    [{x: 576, y: 617}, {x: 594, y: 617}, {x: 611, y: 600}, {x: 611, y: 582}],
-    [{x: 611, y: 582}, {x: 611, y: 564}, {x: 594, y: 547}, {x: 576, y: 547}],
-    [{x: 576, y: 547}, {x: 558, y: 547}, {x: 541, y: 564}, {x: 541, y: 582}],
-    [{x: 541, y: 582}, {x: 541, y: 600}, {x: 558, y: 617}, {x: 576, y: 617}]
+    [{x: 576-xOffset, y: 617-yOffset}, {x: 594-xOffset, y: 617-yOffset}, {x: 611-xOffset, y: 600-yOffset}, {x: 611-xOffset, y: 582-yOffset}],
+    [{x: 611-xOffset, y: 582-yOffset}, {x: 611-xOffset, y: 564-yOffset}, {x: 594-xOffset, y: 547-yOffset}, {x: 576-xOffset, y: 547-yOffset}],
+    [{x: 576-xOffset, y: 547-yOffset}, {x: 558-xOffset, y: 547-yOffset}, {x: 541-xOffset, y: 564-yOffset}, {x: 541-xOffset, y: 582-yOffset}],
+    [{x: 541-xOffset, y: 582-yOffset}, {x: 541-xOffset, y: 600-yOffset}, {x: 558-xOffset, y: 617-yOffset}, {x: 576-xOffset, y: 617-yOffset}]
 
     ],
-    // controlPoints = [
-    //   [{x: inputPoints[0][0].x, y: inputPoints[0][0].y}, {x: inputPoints[0][1].x, y: inputPoints[0][1].y}],
-    //   [{x: (reflectLineX+(reflectLineX-inputPoints[0][0].x)), y: inputPoints[0][0].y},
-    //    {x: (reflectLineX+(reflectLineX-inputPoints[0][1].x)), y: inputPoints[0][1].y}]
-    // ],
-    test_controlPoints = [],
     bezierCurves = [],
     line = d3.svg.line().x(x).y(y),
     flag = 0,
     stroke = d3.scale.category20b(),
     // Tell range how many curves to expect
     numberOfCurves = d3.range(0, controlPoints.length);
-    //console.log(controlPoints);
 
 // Intialize Bezier curve array with empty objects
 for (var j=0; j<controlPoints.length; j++){
@@ -113,10 +109,10 @@ for (var i=0; i<controlPoints.length/2; i++){
 var canvas = d3.select("body").selectAll("svg")
     .data(numberOfCurves)
   .enter().append("svg")
-    // .attr("preserveAspectRatio", "xMinYMin meet")
-    // .attr("viewBox", "0 0 1210 910")
-    .attr("width", w + 2 * padding)
-    .attr("height", h + 2 * padding)
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", "0 0 1100 910")
+    //.attr("width", w + 2 * padding)
+    //.attr("height", h + 2 * padding)
   .append("g")
     .attr("transform", "translate(" + padding + "," + padding + ")");
 
@@ -127,12 +123,11 @@ d3.timer(function(elapsed) {
   if (t>1) flag = 1;
   if (t<0) flag = 0;
   if (flag === 0){
+    // To slow down the animation, simply increment the divide value
     t = (t + (elapsed - last) / 20000);
     last = elapsed;
   }
   if (flag === 1){
-    // t = (t - (elapsed - last) / 20000);
-    // last = elapsed;
     t = 1.0;
   }
   update();
@@ -203,6 +198,9 @@ function getCurve(d) {
 function x(d) { return d.x; }
 function y(d) { return d.y; }
 function color(d, i) {
-  stroke(-i);
-  return d.length > 1 ? stroke(i) : "red";
+  // The color array will determine the color of the curve depending of the order, i.e. a curve of order 5 will utilize the array
+  // while an order of >5 will utilize the array but then input a color based on "i" (No need to add additional colors since order 5
+  // is the highest order curve used). The HEX value at the end is the color of the point that moves. I recommend changing the color
+  // of the curve in main.css (in .curve) to match this (i.e. the curve and dot should be the same color)
+  return d.length > 1 ? ["#393945", "#6178bb", "#6178bb", "#6178bb", "#6178bb"][i] : "#149287";
 }
